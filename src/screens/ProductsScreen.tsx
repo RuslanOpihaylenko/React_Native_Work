@@ -1,4 +1,5 @@
 import React from "react";
+import { useFavorites } from "../content/FavouriteContent";
 
 import {
     View,
@@ -17,6 +18,23 @@ export default function ProductScreen({
 }: ProductScreenProps) {
 
     const { product } = route.params;
+    const {
+    addToFavorites,
+    removeFromFavorites,
+    isFavorite,
+} = useFavorites();
+
+const favorite = isFavorite(product.id);
+
+const handleFavorite = () => {
+
+    if (favorite) {
+        removeFromFavorites(product.id);
+    } else {
+        addToFavorites(product);
+    }
+
+};
 
     return (
         <ScrollView style={styles.body}>
@@ -38,7 +56,14 @@ export default function ProductScreen({
                 }}
                 style={styles.image}
             />
-
+            <TouchableOpacity
+    style={styles.favoriteButton}
+    onPress={handleFavorite}
+>
+    <Text style={styles.favoriteIcon}>
+        {favorite ? "♥" : "♡"}
+    </Text>
+</TouchableOpacity>
             <View style={styles.container}>
 
 
@@ -307,5 +332,23 @@ const styles = StyleSheet.create({
         color: "#4d9b87",
         fontWeight: "bold",
     },
+    imageContainer: {
+    position: "relative",
+},
 
+favoriteButton: {
+    position: "absolute",
+    right: 20,
+    top: 20,
+    width: 45,
+    height: 45,
+    borderRadius: 25,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+},
+
+favoriteIcon: {
+    fontSize: 30,
+},
 });
