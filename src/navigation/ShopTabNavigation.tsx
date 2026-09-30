@@ -17,6 +17,7 @@ export default function ShopTabNavigator() {
         <Tab.Navigator>
 
             <Tab.Screen name="Home" component={ShopNavigator} options={{
+                                headerShown: false,
                                 tabBarIcon: ({focused}) => (
                                     <Image
                                     source={require("../../assets/home_icon.jpg")}
@@ -33,6 +34,7 @@ export default function ShopTabNavigator() {
                 name="Like"
                 component={FavoritesScreen}
                 options={{
+                    headerShown: false,
                     title: "Like",
                     tabBarIcon: () => (
                         <Text style={{ fontSize: 22 }}>
@@ -41,6 +43,7 @@ export default function ShopTabNavigator() {
                     ),
                 }}
             />
+            
 
         </Tab.Navigator>
     );

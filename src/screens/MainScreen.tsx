@@ -1,5 +1,7 @@
 import React from "react";
-
+import {
+    DrawerActions,
+} from "@react-navigation/native";
 import {
     Text,
     View,
@@ -56,7 +58,20 @@ export default function MainScreen({
         <View style={styles.body}>
 
             <View style={styles.top}>
+                 <TouchableOpacity
+        style={styles.menuButton}
+        onPress={() =>
+            navigation.dispatch(
+                DrawerActions.openDrawer()
+            )
+        }
+    >
 
+        <Text style={styles.menuIcon}>
+            ☰
+        </Text>
+
+    </TouchableOpacity>
                 <View style={styles.topText}>
 
                     <Text style={styles.logo}>
@@ -186,5 +201,14 @@ const styles = StyleSheet.create({
         marginTop: 4,
         color: "#555",
     },
+    menuButton: {
+    width: 60,
+    height: 60,
+    alignItems: "center",
+    justifyContent: "center",
+},
 
+menuIcon: {
+    fontSize: 25,
+},
 });

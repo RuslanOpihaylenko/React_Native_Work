@@ -8,12 +8,13 @@ import { DrawerNavigator } from './src/navigation/DrawerNavigator';
 import ShopNavigator from './src/navigation/ShopNavigator';
 import { FavoritesProvider } from './src/content/FavouriteContent';
 import ShopTabNavigator from './src/navigation/ShopTabNavigation';
+import ShopDrawerNavigator from './src/navigation/ShopDrawerNavigator';
 
 export default function App() {
   return (
     <FavoritesProvider>
       <NavigationContainer>
-        <ShopTabNavigator/>
+        <ShopDrawerNavigator/>
       </NavigationContainer>
     </FavoritesProvider>
   );
